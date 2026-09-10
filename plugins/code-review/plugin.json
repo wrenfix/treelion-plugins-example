@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 2,
+  "name": "code-review",
+  "displayName": "代码审查",
+  "description": "检查代码质量、测试和风险"
+}

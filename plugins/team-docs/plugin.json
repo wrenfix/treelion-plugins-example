@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "name": "team-docs",
+  "displayName": "团队文档",
+  "description": "连接团队文档并辅助编写说明",
+  "configFields": [
+    {
+      "key": "WORKSPACE",
+      "label": "文档空间",
+      "description": "技能和文档连接使用同一个空间",
+      "secret": false,
+      "required": true
+    },
+    {
+      "key": "LANGUAGE",
+      "label": "输出语言",
+      "secret": false,
+      "required": false,
+      "defaultValue": "简体中文"
+    },
+    {
+      "key": "TOKEN",
+      "label": "文档访问令牌",
+      "secret": true,
+      "required": true,
+      "description": "在文档服务中申请的访问令牌，仅用于 MCP 连接"
+    }
+  ],
+  "mcpServers": {
+    "docs": {
+      "transport": "http",
+      "url": "https://docs.example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${secret.TOKEN}",
+        "X-Workspace": "${config.WORKSPACE}"
+      },
+      "auth": {
+        "type": "apiKey"
+      }
+    }
+  }
+}
